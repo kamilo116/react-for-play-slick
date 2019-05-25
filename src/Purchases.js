@@ -1,16 +1,16 @@
 import React, {Component} from 'react';
 
-class Products extends Component {
+class Purchases extends Component {
 
     constructor() {
         super();
         this.state = {
-            products: [],
+            purchases: [],
         };
     }
 
     componentDidMount() {
-        var url = "http://localhost:9000/products"
+        var url = "http://localhost:9000/purchases"
 
         fetch(url, {
             mode: 'cors',
@@ -24,28 +24,28 @@ class Products extends Component {
             .then(results => {
                 return results.json();
             }).then(data => {
-            let products = data.map((prod) => {
+            let purchases = data.map((purchase) => {
                 return (
-                    <div key={prod.id}>
-                        <div className="product">{prod.name}</div>
-                        <div>{prod.price}</div>
-                        <div>{prod.amount}</div>
-                        <div>{prod.description}</div>
-                        <div>{prod.category}</div>
+                    <div key={purchase.id}>
+                        <div className="purchase">{purchase.name}</div>
+                        <div>{purchase.user_id}</div>
+                        <div>{purchase.product_id}</div>
+                        <div>{purchase.date}</div>
+                        <div>{purchase.amount}</div>
                     </div>
                 )
             })
-            this.setState({products: products})
+            this.setState({purchases: purchases})
         })
     }
 
     render() {
         return (
-            <div className="products">
-                {this.state.products}
+            <div className="purchases">
+                {this.state.purchases}
             </div>
         )
     }
 }
 
-export default Products;
+export default Purchases;

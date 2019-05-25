@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class ProductForm extends Component {
+class CategoryForm extends Component {
 
     constructor() {
         super();
@@ -11,7 +11,7 @@ class ProductForm extends Component {
         event.preventDefault();
         const data = new FormData(event.target);
 
-        var url = 'http://localhost:9000/product/';
+        var url = 'http://localhost:9000/category/';
 
         fetch(url, {
             method: 'POST',
@@ -22,23 +22,14 @@ class ProductForm extends Component {
     render() {
         return (
             <form onSubmit={this.handleSubmit}>
-                <label htmlFor="name">Product name</label>
+                <label htmlFor="name">Category name</label>
                 <input id="name" name="name" type="text" />
-
-
-                <label htmlFor="price">Price</label>
-                <input id="price" name="price" type="number" />
 
                 <label htmlFor="description">Description</label>
                 <input id="description" name="description" type="text" />
 
-                <label htmlFor="amount">Amount</label>
-                <input id="amount" name="amount" type="number" />
 
-                <label htmlFor="category">Category</label>
-                <input id="category" name="category" type="number" />
-
-                <button>Add product</button>
+                <button>Add Category</button>
             </form>
         );
     }
@@ -46,4 +37,4 @@ class ProductForm extends Component {
 }
 
 
-export default ProductForm;
+export default CategoryForm;
